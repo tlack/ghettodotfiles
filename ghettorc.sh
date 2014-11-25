@@ -1,5 +1,19 @@
 #!/bin/bash
 #
+
+# Ghettodotfilez aliases:
+
+# getting around:
+SITE=$HOME/whatever
+SITELOG=/var/log/nginx/*error.log
+alias dbconnect=$SITE/dbconnect.sh
+alias cds="cd $SITE"
+alias err="tail -`expr $LINES - 1` $SITELOG | less -S +G"
+
+# git specific:
+alias gs='git status | less'
+git config merge.conflictstyle diff3
+
 # DESCRIPTION:
 #
 #   Set the bash prompt according to:
