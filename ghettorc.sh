@@ -1,11 +1,14 @@
 #!/bin/bash
 #
 
+# General config:
+
+SITE=$HOME/whatever
+SITELOG=/var/log/nginx/*error.log
+
 # Ghettodotfilez aliases:
 
 # getting around:
-SITE=$HOME/whatever
-SITELOG=/var/log/nginx/*error.log
 alias dbconnect=$SITE/dbconnect.sh
 alias cds="cd $SITE"
 alias err="tail -`expr $LINES - 1` $SITELOG | less -S +G"
@@ -130,3 +133,7 @@ function set_bash_prompt () {
 
 # Tell bash to execute this function just before displaying its prompt.
 PROMPT_COMMAND=set_bash_prompt
+
+HOSTNAME=`hostname -s`
+echo -ne "\033k$HOSTNAME\033\\"
+
