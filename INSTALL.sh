@@ -1,8 +1,8 @@
 dir=$(cd `dirname $0` && pwd)
 
 
-if [ -d $HOME/.vim ]; then
-	echo delete your $HOME/.vim
+if [ -d $HOME/.vim -o -e $HOME/.vimrc -o -e $HOME/.ghettorc.sh ]; then
+	echo delete your $HOME/.vim $HOME/.vimrc $HOME/.ghettorc.sh
 	exit 1
 fi
 
