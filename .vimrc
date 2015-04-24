@@ -91,5 +91,9 @@ map <C-n> :NERDTreeToggle<CR>
 autocmd vimenter * NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
+" pop stuff uses coreytabs
+autocmd BufRead *pop*/*php set expandtab tabstop=4 shiftwidth=4
+autocmd BufRead *.q set nobackup nowritebackup noswapfile
+
 call pathogen#infect()
 
