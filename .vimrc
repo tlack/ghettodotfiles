@@ -87,13 +87,25 @@ nmap <silent> <Leader>w :vsplit<bar>wincmd l<bar>exe "norm! Ljz<c-v><cr>"<cr>:se
 set wildmenu
 set wildmode=list:longest,full
 
+" When editing a file, always jump to the last known cursor position.
+" " Don't do it when the position is invalid or when inside an event handler
+" " (happens when dropping a file on gvim).
+autocmd BufReadPost *
+	\ if line("'\"") > 0 && line("'\"") <= line("$") |
+  \   exe "normal g`\"" |
+  \ endif
+
+" NERDTree
 map <C-n> :NERDTreeToggle<CR>
 autocmd vimenter * NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
-" pop stuff uses coreytabs
+" pop: coreytabs
 autocmd BufRead,BufNewFile *pop*/*php set expandtab tabstop=4 shiftwidth=4
 autocmd BufRead,BufNewFile *.q set nobackup nowritebackup noswapfile
+autocmd BufRead,BufNewFile *.k        setfiletype k
+autocmd BufRead,BufNewFile *.q        setfiletype q
+autocmd BufRead,BufNewFile *.s        setfiletype sql
 
 call pathogen#infect()
 
