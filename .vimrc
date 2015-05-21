@@ -97,6 +97,8 @@ autocmd BufReadPost *
 
 " NERDTree
 map <C-n> :NERDTreeToggle<CR>
+" disable fancy unicode directory UI - breaks some vims
+let g:NERDTreeDirArrows=0
 autocmd vimenter * NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
