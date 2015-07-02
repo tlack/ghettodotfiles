@@ -97,7 +97,9 @@ autocmd BufReadPost *
 
 " NERDTree
 map <C-n> :NERDTreeToggle<CR>
-autocmd vimenter * NERDTree
+" disable fancy unicode directory UI - breaks some vims
+let g:NERDTreeDirArrows=0 
+autocmd vimenter * NERDTree | wincmd l
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 " pop: coreytabs
