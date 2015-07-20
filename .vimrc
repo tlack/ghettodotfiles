@@ -83,6 +83,7 @@ vmap <s-tab> <gv
 inoremap ,, <ESC>
 " nnoremap <leader>w <C-w>v<C-w>l
 nmap <silent> <Leader>w :vsplit<bar>wincmd l<bar>exe "norm! Ljz<c-v><cr>"<cr>:set scb<cr>:wincmd h<cr>:set scb<cr>
+nmap <Leader>r :w<CR>:!sh `sed -n 's/.* run: \(.*\)/\1/p' %`<CR>
 
 set wildmenu
 set wildmode=list:longest,full
