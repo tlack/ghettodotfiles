@@ -109,6 +109,7 @@ autocmd BufRead,BufNewFile *.q set nobackup nowritebackup noswapfile
 autocmd BufRead,BufNewFile *.k        setfiletype k
 autocmd BufRead,BufNewFile *.q        setfiletype q
 autocmd BufRead,BufNewFile *.s        setfiletype sql
+autocmd BufRead,BufNewFile *.xxl      setfiletype xxl
 
 call pathogen#infect()
 
