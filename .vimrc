@@ -47,8 +47,8 @@ set foldmethod=marker
 nmap <F2> 0v/{<CR>%zf
 
 " make tab in normal mode go to next file, shfit tab previous
-nmap <tab> <Ctrl-W><Down>
-nmap <s-tab> :prev<CR>
+nmap <Tab> <C-W><Down>
+nmap <S-Tab> <C-W><Up>
 nnoremap <C-N> :next<CR>
 nnoremap <C-P> :prev<CR>
 
