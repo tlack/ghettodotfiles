@@ -66,23 +66,23 @@ map  <C-A> ^
 imap <C-A> <Esc>^i
 map! <C-E> <End>
 imap <C-K> <Esc>:dl<CR>i
-
 " fuzzyfinder buffer search - ctrl-b
 map <C-B> :FufBuffer<CR>
-
 " normal mode space scrolls page
 noremap <space> <C-f> 
-
 " insert mode: Ctrl-Z is undo
 imap <C-Z> <Esc>ui
-
 " make tab in visual mode indent, shift-tab dedent
 vmap <tab> >gv
 vmap <s-tab> <gv
-
 inoremap ,, <ESC>
 " nnoremap <leader>w <C-w>v<C-w>l
 nmap <silent> <Leader>w :vsplit<bar>wincmd l<bar>exe "norm! Ljz<c-v><cr>"<cr>:set scb<cr>:wincmd h<cr>:set scb<cr>
+nmap <Leader>q :w<CR>:!rlwrap ~/q/w32/q %<CR>
+nmap <Leader>t :w<CR>:!sh test.sh % \|\| sh ../test.sh %<CR>
+nmap <Leader>s :w<CR>:!sh start.sh % \|\| sh ../start.sh %<CR>
+nmap <Leader>s :w<CR>:!sh start.sh % \|\| sh ../start.sh %<CR>
+nmap <Leader>r :w<CR>:!sh `sed -n 's/.* run: \(.*\)/\1/p' %`<CR>
 
 set wildmenu
 set wildmode=list:longest,full
