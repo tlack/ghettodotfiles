@@ -53,6 +53,7 @@ LIGHT_GREEN="\[\033[1;32m\]"
        CYAN="\[\033[0;36m\]"
  LIGHT_CYAN="\[\033[1;36m\]"
       WHITE="\[\033[1;37m\]"
+       GRAY="\[\033[1;30m\]"
  LIGHT_GRAY="\[\033[0;37m\]"
  COLOR_NONE="\[\e[0m\]"
 
@@ -103,7 +104,11 @@ function set_git_branch {
   fi
 
   # Set the final branch string.
-  BRANCH="${state}(${branch})${remote}${COLOR_NONE} "
+	if [[ "x$branch" != "x" ]]; then
+		BRANCH="${state}(${branch})${remote}${COLOR_NONE} "
+	else
+		BRANCH=""
+	fi
 }
 
 # Return the prompt symbol to use, colorized based on the return value of the
@@ -130,12 +135,14 @@ function set_bash_prompt () {
   fi
   
   # Set the bash prompt variable.
-  PS1="${CYAN}\u@\h \w ${COLOR_NONE}${BRANCH}${PROMPT_SYMBOL} "
+  PS1="${GRAY}\u@\h \w \# \t ${COLOR_NONE}${BRANCH}${PROMPT_SYMBOL} "
 }
 
 # Tell bash to execute this function just before displaying its prompt.
 PROMPT_COMMAND=set_bash_prompt
 
 HOSTNAME=`hostname -s`
-echo -ne "\033k$HOSTNAME\033\\"
+echo -e "\033khost=$HOSTNAME\033\\"
+
+LS_COLORS="di=01;36;40:ow=01;36;40" && export LS_COLORS
 
