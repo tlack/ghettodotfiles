@@ -11,5 +11,6 @@ rm -rf $HOME/.vim $HOME/ghettorc.sh
 ln -s $dir/.vim $HOME/.vim
 ln $dir/ghettorc.sh $HOME/.ghettorc.sh
 ln $dir/.vimrc $HOME/.vimrc
+ln $dir/.screenrc $HOME/.screenrc
 echo ". $HOME/.ghettorc.sh" >> $HOME/.bashrc
 
