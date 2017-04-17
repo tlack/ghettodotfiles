@@ -1,5 +1,5 @@
 hardstatus alwayslastline
-hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{=kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B}%Y-%m-%d %{W}%c %{g}]'
+hardstatus string '%{= kG}[ %{w}%H %{w}][%= %{=kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B}%Y-%m-%d %{W}%c %{g}]'
 escape ^Gg
 defscrollback 9999
 termcapinfo xterm* 'hs:ts=\E]0;:fs=\007:ds=\E]0;\007'
@@ -19,3 +19,6 @@ terminfo xterm* 'Co#256:AB\=E[48;5;%p1%dm:AF=\E[38;5;%p1%dm'
 
 # disable alternate screen to fix putty scrolling
 termcapinfo xterm ti@:te@
+
+term screen-256color
+
