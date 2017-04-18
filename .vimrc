@@ -47,8 +47,8 @@ set foldmethod=marker
 nmap <F2> 0v/{<CR>%zf
 
 " make tab in normal mode go to next file, shfit tab previous
-nmap <tab> <Ctrl-W><Down>
-nmap <s-tab> :prev<CR>
+nmap <Tab> <C-W><Down>
+nmap <S-Tab> <C-W><Up>
 nnoremap <C-N> :next<CR>
 nnoremap <C-P> :prev<CR>
 
@@ -66,24 +66,27 @@ map  <C-A> ^
 imap <C-A> <Esc>^i
 map! <C-E> <End>
 imap <C-K> <Esc>:dl<CR>i
-
 " fuzzyfinder buffer search - ctrl-b
 map <C-B> :FufBuffer<CR>
-
 " normal mode space scrolls page
 noremap <space> <C-f> 
-
 " insert mode: Ctrl-Z is undo
 imap <C-Z> <Esc>ui
-
 " make tab in visual mode indent, shift-tab dedent
 vmap <tab> >gv
 vmap <s-tab> <gv
-
 inoremap ,, <ESC>
 " nnoremap <leader>w <C-w>v<C-w>l
 nmap <silent> <Leader>w :vsplit<bar>wincmd l<bar>exe "norm! Ljz<c-v><cr>"<cr>:set scb<cr>:wincmd h<cr>:set scb<cr>
-nmap <Leader>r :w<CR>:!sh `sed -n 's/.* run: \(.*\)/\1/p' %`<CR>
+
+" run as q script
+nmap <Leader>q :w<CR>:!rlwrap ~/q/w32/q %<CR>
+" run test.sh with this filename as arg
+nmap <Leader>t :w<CR>:!sh test.sh % \|\| sh ../test.sh %<CR>
+" run start.sh with this filename as arg
+nmap <Leader>s :w<CR>:!sh start.sh % \|\| sh ../start.sh %<CR>
+" find run command in comment, then call with filename as arg
+nmap <Leader>r :w<CR>:!sh `sed -n 's/.* RUN:\(.*\)$/\1/p' %`<CR>
 
 set wildmenu
 set wildmode=list:longest,full
@@ -98,7 +101,9 @@ autocmd BufReadPost *
 
 " NERDTree
 map <C-n> :NERDTreeToggle<CR>
-autocmd vimenter * NERDTree
+" disable fancy unicode directory UI - breaks some vims
+let g:NERDTreeDirArrows=0 
+autocmd vimenter * NERDTree | wincmd l
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 " pop: coreytabs
@@ -107,6 +112,7 @@ autocmd BufRead,BufNewFile *.q set nobackup nowritebackup noswapfile
 autocmd BufRead,BufNewFile *.k        setfiletype k
 autocmd BufRead,BufNewFile *.q        setfiletype q
 autocmd BufRead,BufNewFile *.s        setfiletype sql
+autocmd BufRead,BufNewFile *.xxl      setfiletype xxl
 
 call pathogen#infect()
 
