@@ -78,11 +78,15 @@ vmap <s-tab> <gv
 inoremap ,, <ESC>
 " nnoremap <leader>w <C-w>v<C-w>l
 nmap <silent> <Leader>w :vsplit<bar>wincmd l<bar>exe "norm! Ljz<c-v><cr>"<cr>:set scb<cr>:wincmd h<cr>:set scb<cr>
+
+" run as q script
 nmap <Leader>q :w<CR>:!rlwrap ~/q/w32/q %<CR>
+" run test.sh with this filename as arg
 nmap <Leader>t :w<CR>:!sh test.sh % \|\| sh ../test.sh %<CR>
+" run start.sh with this filename as arg
 nmap <Leader>s :w<CR>:!sh start.sh % \|\| sh ../start.sh %<CR>
-nmap <Leader>s :w<CR>:!sh start.sh % \|\| sh ../start.sh %<CR>
-nmap <Leader>r :w<CR>:!sh `sed -n 's/.* run: \(.*\)/\1/p' %`<CR>
+" find run command in comment, then call with filename as arg
+nmap <Leader>r :w<CR>:!sh `sed -n 's/.* RUN:\(.*\)$/\1/p' %`<CR>
 
 set wildmenu
 set wildmode=list:longest,full
