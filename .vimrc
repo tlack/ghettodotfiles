@@ -99,8 +99,12 @@ autocmd BufReadPost *
 map <C-n> :NERDTreeToggle<CR>
 " disable fancy unicode directory UI - breaks some vims
 let g:NERDTreeDirArrows=0 
-autocmd vimenter * NERDTree | wincmd l
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+let g:NERDTreeTabsOpenOnGUIStartup=0
+
+
+    autocmd StdinReadPre * let s:std_in=1
+		autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
 
 " pop: coreytabs
 autocmd BufRead,BufNewFile *pop*/*php set expandtab tabstop=4 shiftwidth=4
