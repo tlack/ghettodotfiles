@@ -9,8 +9,6 @@ SITELOG=/var/log/nginx/*error.log
 # Ghettodotfilez aliases:
 
 # getting around:
-alias dbconnect=$SITE/dbconnect.sh
-alias cds="cd $SITE"
 alias err="tail -`expr $LINES - 1` $SITELOG | less -S +G"
 alias q="rlwrap ~/q/l32/q"
 
@@ -70,6 +68,9 @@ function is_svn_repository {
 # Determine the branch/state information for this git repository.
 function set_git_branch {
   # Capture the output of the "git status" command.
+	if [ ! -d .git ]; then
+		return
+	fi
   git_status="$(git status 2> /dev/null)"
 
   # Set color based on clean/staged/dirty.
@@ -146,5 +147,6 @@ echo -e "\033khost=$HOSTNAME\033\\"
 
 LS_COLORS="di=01;36;40:ow=01;36;40" && export LS_COLORS
 
-which screen && screen -ls
+which screen && screen -ls && echo 'run screen -rdx'
+
 
