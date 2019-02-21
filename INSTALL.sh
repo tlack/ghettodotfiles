@@ -4,8 +4,8 @@ echo .ghettorc
 ln $dir/ghettorc.sh $HOME/.ghettorc.sh
 echo ". $HOME/.ghettorc.sh" >> $HOME/.bashrc
 
-echo .screenrc
-ln $dir/screenrc $HOME/.screenrc
+echo .tmux.conf
+ln $dir/tmux.conf $HOME/.tmux.conf
 
 rm -rf $HOME/.vim $HOME/.ghettorc.sh
 ln $dir/.vimrc $HOME/.vimrc
