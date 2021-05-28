@@ -43,7 +43,7 @@ set autochdir
 set winheight=9999
 set winminheight=0
 
-set foldmethod=marker
+set foldmethod=syntax
 nmap <F2> 0v/{<CR>%zf
 
 " make tab in normal mode go to next file, shfit tab previous
@@ -115,9 +115,10 @@ let g:NERDTreeDirArrows=0
 let g:NERDTreeTabsOpenOnGUIStartup=0
 
 
-    autocmd StdinReadPre * let s:std_in=1
-		autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
+let g:mix_format_on_save = 1
 
 " pop: coreytabs
 autocmd BufRead,BufNewFile *pop*/*php set expandtab tabstop=4 shiftwidth=4
