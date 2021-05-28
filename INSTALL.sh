@@ -1,13 +1,22 @@
-dir=$(cd `dirname $0` && pwd)
+dir=$(dirname $0)
+echo cwd = $dir
 
-echo .ghettorc 
-ln $dir/ghettorc.sh $HOME/.ghettorc.sh
+echo Installing .ghettorc 
+rm ~/.ghettorc.sh 2>/dev/null
+cp $dir/ghettorc.sh $HOME/.ghettorc.sh
 echo ". $HOME/.ghettorc.sh" >> $HOME/.bashrc
 
-echo .tmux.conf
-ln $dir/tmux.conf $HOME/.tmux.conf
+echo Installing .tmux.conf
+rm ~/.tmux.conf 2>/dev/null
+cp $dir/tmux.conf $HOME/.tmux.conf
 
-rm -rf $HOME/.vim $HOME/.ghettorc.sh
-ln $dir/.vimrc $HOME/.vimrc
-ln -s $dir/.vim $HOME/.vim
+echo Installing .vim folder
+rm -rf $HOME/.vim $HOME/.vimrc 2>/dev/null
+cp -Rp $dir/.vim $HOME/.vim
+
+echo Installing .vimrc
+cp $dir/.vimrc $HOME/.vimrc
+
+echo Q: How do you make an octopus laugh?
+echo A: Give him ten-tickles
 
