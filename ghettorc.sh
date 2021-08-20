@@ -147,6 +147,8 @@ echo -e "\033khost=$HOSTNAME\033\\"
 
 LS_COLORS="di=01;36;40:ow=01;36;40" && export LS_COLORS
 
-which screen && screen -ls && echo 'run screen -rdx'
+# enable full history in erlang / iex
+export ERL_AFLAGS="-kernel shell_history enabled"
 
+which screen && screen -ls && echo 'run screen -rdx'
 
