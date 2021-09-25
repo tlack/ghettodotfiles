@@ -135,7 +135,7 @@ function set_bash_prompt () {
     BRANCH=''
   fi
   
-  PS1="\033]0;\u@\h \w\007${GRAY}\u@\h \w \# \t ${COLOR_NONE}${BRANCH}${PROMPT_SYMBOL} "
+  PS1="\[\033]0;\u@\h \w\a\]${GRAY}\u@\h \w \# \t ${COLOR_NONE}${BRANCH}${PROMPT_SYMBOL} "
 }
 
 # Tell bash to execute this function just before displaying its prompt.
